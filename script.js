@@ -18,7 +18,7 @@ console.log(secretNumber);
 
 // it's good practice to keep the variable which holds the data in the script and not rely on the DOM to store it
 let score = 20;
-
+let highscore = 0;
 // function expression inside of the event handler
 document.querySelector('.check').addEventListener
     ('click', function () {
@@ -36,6 +36,12 @@ document.querySelector('.check').addEventListener
 
             document.querySelector('body').style.backgroundColor = '#60b347';
             document.querySelector('.number').style.width = '30rem';
+
+            // highscore
+            if (score > highscore) {
+                highscore = score;
+                document.querySelector('.highscore').textContent = highscore;
+            }
 
             // when guess is too high
         } else if (guess > secretNumber) {
@@ -64,7 +70,7 @@ document.querySelector('.check').addEventListener
 // click handler for 'again' button
 document.querySelector('.again').addEventListener
     ('click', function () { // this is an anonymous func because it has no name
-        let score = 20;
+        score = 20;
         secretNumber = Math.trunc(Math.random() * 20) + 1;
         console.log(secretNumber);
 
